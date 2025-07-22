@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixar Educational Consultancy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        :root {
+            --primary: #005792;
+            --primary-dark: #003a61;
+            --secondary: #f0f6ff;
+            --dark: #1a2b44;
+            --light: #ffffff;
+            --gray: #6c757d;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(45deg, var(--primary), var(--primary-dark));
+        }
+        
+        body {
+            background: var(--secondary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            color: var(--dark);
+        }
+        
+        .business-card {
+            width: 100%;
+            max-width: 600px;
+            background: var(--light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            position: relative;
+            padding: 20px;
+            text-align: center;
+            color: var(--light);
+            background: var(--primary);
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: scaleIn 1.2s ease-in-out;
+        }
+        
+        .hero-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light);
+            box-shadow: 0 0 15px var(--primary-dark);
+            background: var(--gradient);
+            padding: 8px;
+        }
+        
+        .logo {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 10px 0;
+        }
+        
+        .services-list {
+            font-size: 0.9rem;
+            color: var(--light);
+            margin-bottom: 10px;
+        }
+        
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-section {
+            text-align: left;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .contact-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .contact-text h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .contact-text p {
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        .contact-text a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            color: var(--light);
+            transform: translateY(-2px);
+        }
+        
+        .qr-code {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .qr-code img {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+        }
+        
+        .vcard-section {
+            background: var(--dark);
+            color: var(--light);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+        }
+        
+        .vcard-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .vcard-desc {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .vcard-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        
+        .vcard-btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 87, 146, 0.3);
+        }
+        
+        .vcard-btn i {
+            margin-right: 8px;
+        }
+        
+        .card-footer {
+            background: var(--secondary);
+            padding: 15px;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @media (max-width: 480 青px) {
+            .card-header {
+                padding: 15px;
+            }
+            
+            .hero-image {
+                height: 180px;
+            }
+            
+            .hero-image img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .card-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .services-list {
+                font-size: 0.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.1rem;
+            }
+            
+            .contact-text {
+                font-size: 0.8rem;
+            }
+            
+            .contact-text h3 {
+                font-size: 0.9rem;
+            }
+            
+            .qr-code img {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .vcard-btn {
+                font-size: 0.8rem;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="card-header">
+            <div class="hero-image">
+                <img src="https://pixaredu.com/teams/pradeep.jpeg" alt="Pixar Educational Consultancy">
+            </div>
+            <div class="logo">
+                <h1>Pixar Educational Consultancy</h1>
+            </div>
+            <div class="card-subtitle">Your Pathway to Global Education</div>
+            <p class="services-list">Visa Counseling | University Applications | Career Guidance</p>
+        </div>
+        
+        <div class="card-body">
+            <div class="contact-section">
+                <h2 class="section-title">Contact Information</h2>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p><a href="tel:+97715907326">+977-1-5907326</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@pixaredu.com">info@pixaredu.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Address</h3>
+                            <p>New Baneshwor, Kathmandu, Nepal</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Connect With Us</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Social Media</h3>
+                        <div class="social-links">
+                            <a href="https://facebook.com/pixareducation" class="social-icon" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@pixareducationconsultancy6925" class="social-icon" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <aのうちclass="social-icon" href="https://www.tiktok.com/@pixar_edu" target="_blank">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://pixaredu.com" alt="QR Code to Pixar Website">
+                    <p class="contact-text">Scan to visit our website</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="vcard-section">
+            <h2 class="vcard-title">Save Our Contact</h2>
+            <p class="vcard-desc">Download our vCard to add Pixar Educational Consultancy’s details to your address book.</p>
+            <a href="#" class="vcard-btn" id="downloadVCard"><i class="fas fa-download"></i> Download vCard</a>
+        </div>
+        
+        <div class="card-footer">
+            © 2025 Pixar Educational Consultancy. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        // Function to generate and download vCard
+        function downloadVCard() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+ORG:Pixar Educational Consultancy
+TEL;TYPE=WORK,VOICE:+97715907326
+EMAIL;TYPE=WORK,PREF:info@pixaredu.com
+ADR;TYPE=WORK:;;New Baneshwor;Kathmandu;;Nepal
+URL:https://pixaredu.com
+URL:https://facebook.com/pixareducation
+URL:https://www.youtube.com/@pixareducationconsultancy6925
+URL:https://www.tiktok.com/@pixar_edu
+NOTE:Your Pathway to Global Education. Experts in visa counseling and university applications.
+END:VCARD`;
+            
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'Pixar_Education.vcf';
+            
+            document.body.appendChild(a);
+            a.click();
+            
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+        
+        document.getElementById('downloadVCard').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadVCard();
+            
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i> Contact Saved!';
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
