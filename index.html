@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixar Educational Consultancy</title>
+    <title>Pradeep Khadka - Pixar Edu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -67,21 +67,84 @@
         }
         
         .hero-image img {
-            width: 150px;
+            width: 170px;
             height: 150px;
-            border-radius: 50%;
+            border-radius: 20%;
             object-fit: cover;
-            border: 4px solid var(--light);
-            box-shadow: 0 0 15px var(--primary-dark);
+            border: 2px solid var(--light);
+            box-shadow: 0 0 34px #8b9fad;
             background: var(--gradient);
             padding: 8px;
         }
+        /* PERSON IMAGE */
+        .hero-image .portrait {
+            width: 150px;
+            height: 150px;
+            border-radius: 30%;
+            object-fit: cover;
+            border: 0px solid var(--light);
+            box-shadow: 0 0 40px #b3bfc7;
+            background: var(--gradient);
+            padding: 5px;
+            z-index: 1;
+        }
+
+        /* LOGO STAMP */
+        .hero-image .corner-logo {
+            position: absolute;
+            bottom: 20px;
+            left: 220px;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: white;
+            padding: 2px;
+            box-shadow: 0 0 6px rgba(0,0,0,0.25);
+            z-index: 2;
+            opacity: 0.95;
+            transform: rotate(-5deg); /* gives it a stamp-like feel */
+        }
+
         
         .logo {
             position: relative;
             z-index: 2;
         }
-        
+        .card-info {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeSlideUp 1.2s ease-out both;
+}
+
+.name {
+  font-size: 2em;
+  font-weight: bold;
+  color: #f1ecec;
+  letter-spacing: 1px;
+  animation: fadeSlideUp 1s ease-out both;
+  animation-delay: 0.2s;
+}
+
+.title {
+  font-size: 1.1em;
+  color: #f4f2f2;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+  animation: fadeSlideUp 1s ease-out both;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 700;
@@ -323,10 +386,16 @@
     <div class="business-card">
         <div class="card-header">
             <div class="hero-image">
-                <img src="https://pixaredu.com/teams/pradeep.jpeg" alt="Pixar Educational Consultancy">
+                <img class="portrait" src="https://pixaredu.com/teams/pradeep.jpeg" alt="Pixar Educational Consultancy">
+                <img class="corner-logo" src="https://pixaredu.com/pixar.webp" alt="Pixar Logo">
             </div>
+
             <div class="logo">
-                <h1>Pixar Educational Consultancy</h1>
+                <div class="card-info">
+                    <h1 class="name">Pradeep Khadka</h1>
+                    <p class="title">CEO @ Pixar Educational Consultancy</p>
+                    </div>
+
             </div>
             <div class="card-subtitle">Your Pathway to Global Education</div>
             <!-- <p class="services-list">Visa Counseling | University Applications | Career Guidance</p> -->
